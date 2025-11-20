@@ -38,7 +38,7 @@ export default function App() {
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
       {/* Profile Card - Below navbar on mobile, Fixed Left Side on desktop */}
-      <div className="pt-12 md:pt-0 md:ml-28">
+      <div className="pt-20 md:pt-0 md:ml-28">
         <ProfileCard setActiveSection={setActiveSection} />
       </div>
 
