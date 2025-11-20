@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTheme } from './contexts/ThemeContext'
 import Navbar from './components/Navbar'
 import ProfileCard from './components/ProfileCard'
 import AboutContent from './components/AboutContent'
@@ -9,6 +10,7 @@ import Contact from './components/Contact'
 
 export default function App() {
   const [activeSection, setActiveSection] = useState('about')
+  const { isDark } = useTheme()
 
   const renderContent = () => {
     switch(activeSection) {
@@ -31,7 +33,7 @@ export default function App() {
   }
 
   return (
-    <div className="flex flex-col md:flex-row min-h-screen bg-gray-50">
+    <div className={`flex flex-col md:flex-row min-h-screen ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
       {/* Navbar - Top on mobile, Left sidebar on desktop */}
       <Navbar activeSection={activeSection} setActiveSection={setActiveSection} />
       
@@ -41,7 +43,7 @@ export default function App() {
       </div>
 
       {/* Main Content Area - Below profile on mobile, Right Side on desktop */}
-      <main className="flex-1 bg-white overflow-y-auto md:ml-[420px]">
+      <main id="cv-content" className={`flex-1 overflow-y-auto md:ml-[420px] ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
         {renderContent()}
       </main>
     </div>

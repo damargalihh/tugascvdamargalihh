@@ -1,32 +1,57 @@
-# 📄 Dokumentasi Aplikasi CV Mahasiswa
+# 📄 CV Website - Single Page Application
+
+---
+
+## 🌐 LIVE DEMO
+
+### ➡️ **[https://cvdamargalih.vercel.app/](https://cvdamargalih.vercel.app/)**
+
+---
 
 ## Deskripsi Aplikasi
 
-Aplikasi CV Mahasiswa adalah Single Page Application (SPA) yang dibangun menggunakan ReactJS dan Vite. Aplikasi ini menampilkan informasi profil mahasiswa secara interaktif dan modern dengan fitur navigasi yang smooth dan responsif untuk berbagai ukuran layar.
+Aplikasi CV Mahasiswa adalah **Single Page Application (SPA)** yang dibangun menggunakan **ReactJS** dan **Vite**. Aplikasi ini menampilkan informasi profil mahasiswa secara interaktif dan modern dengan fitur navigasi yang smooth dan responsif untuk berbagai ukuran layar.
+
+---
+
+## ✨ Fitur Aplikasi
 
 ### Fitur Utama:
-- **Single Page Application** dengan navigasi tab-based
-- **Responsive Design** - Support desktop, tablet, dan mobile
-- **Profile Section** - Menampilkan foto, nama, kontak, dan informasi personal
-- **About Me** - Deskripsi singkat dan detail personal (age, residence, freelance, address)
-- **Services** - Layanan yang ditawarkan (Web Development, UI/UX Design, Frontend Development, Responsive Design)
+1. **Single Page Application** - Navigasi berbasis tab tanpa reload halaman
+2. **Responsive Design** - Support untuk desktop, tablet, dan mobile
+3. **Dark Mode** - Toggle tema light/dark dengan localStorage
+4. **Download CV PDF** - Generate dan download CV dalam format PDF profesional
+5. **Typing Animation** - Animasi teks dinamis pada job title
+6. **Contact Form** - Form kontak yang fungsional dengan validasi
+
+### Konten yang Ditampilkan:
+- **Profile Section** - Foto, nama, job title, social media
+- **About Me** - Deskripsi singkat dan informasi personal
+- **Services** - Layanan yang ditawarkan
 - **Skills & Expertise** - Progress bar skill dengan persentase
 - **Experience** - Riwayat pengalaman kerja/organisasi
-- **Contact** - Form kontak dan informasi kontak lengkap dengan social media
+- **Contact** - Form kontak dan informasi kontak lengkap
 
-### Teknologi yang Digunakan:
+---
+
+## 🛠️ Teknologi yang Digunakan
+
 - **React 18** - Library JavaScript untuk membangun UI
 - **Vite** - Build tool yang cepat dan modern
-- **Tailwind CSS** - Utility-first CSS framework
-- **React Hooks** - useState untuk state management
+- **Tailwind CSS** - Utility-first CSS framework untuk styling
+- **jsPDF** - Library untuk generate PDF
+- **EmailJS** - Service untuk integrasi email (opsional)
 
-### Struktur Folder:
+---
+
+## 📂 Struktur Folder
+
 ```
 cvgalih/
 ├── public/
 ├── src/
-│   ├── assets/
-│   ├── components/
+│   ├── assets/              # Gambar dan assets
+│   ├── components/          # Komponen React
 │   │   ├── AboutContent.jsx
 │   │   ├── Contact.jsx
 │   │   ├── Experiences.jsx
@@ -34,138 +59,99 @@ cvgalih/
 │   │   ├── ProfileCard.jsx
 │   │   ├── Services.jsx
 │   │   └── Skills.jsx
-│   ├── data/
+│   ├── contexts/            # Context API
+│   │   └── ThemeContext.jsx
+│   ├── data/                # Data source
 │   │   └── dataMahasiswa.js
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
+│   ├── hooks/               # Custom hooks
+│   │   └── useTypingAnimation.js
+│   ├── App.jsx              # Main component
+│   ├── main.jsx             # Entry point
+│   └── index.css            # Global styles
 ├── index.html
 ├── package.json
 ├── tailwind.config.js
 ├── vite.config.js
-└── DOC.md
+└── README.md
 ```
 
-### Komponen Aplikasi:
-1. **Navbar.jsx** - Navigasi sidebar (desktop) dan top bar (mobile)
-2. **ProfileCard.jsx** - Card profil dengan foto, nama, social media, dan tombol CTA
-3. **AboutContent.jsx** - Section about me dengan informasi personal
-4. **Services.jsx** - Grid card layanan yang ditawarkan
-5. **Skills.jsx** - Progress bar skills dengan animasi
-6. **Experiences.jsx** - Timeline pengalaman kerja
-7. **Contact.jsx** - Form kontak dan informasi kontak
-
-### Data Management:
-Semua data mahasiswa disimpan di file terpisah `src/data/dataMahasiswa.js` dan di-import ke komponen yang membutuhkan. Data tidak di-hardcode di dalam komponen, melainkan dibaca secara otomatis dari object data.
-
 ---
 
-## 🚀 Cara Menjalankan Aplikasi
 
-### Prasyarat:
-- Node.js versi 16 atau lebih tinggi
-- npm atau yarn package manager
 
-## 🌐 Link Deployment
+## 📊 Komponen Aplikasi
 
-**Live Demo:** [Akan diisi setelah deployment]
+### 1. **Navbar.jsx**
+Navigasi utama dengan 5 menu: About, Resume, Works, Blog, Contact
+- Responsive: Horizontal (mobile) / Vertical sidebar (desktop)
+- Active state indication
+- Dark mode aware
 
-Platform deployment: Vercel / Netlify
+### 2. **ProfileCard.jsx**
+Card profil dengan:
+- Foto profil
+- Nama dan typing animation
+- Dark mode toggle
+- Tombol Download CV (PDF)
+- Tombol Contact Me
+- Social media links
 
----
+### 3. **AboutContent.jsx**
+Informasi tentang diri:
+- Deskripsi singkat
+- Info personal (Age, Residence, Freelance, Address)
 
-## 📸 Screenshot Tampilan
+### 4. **Services.jsx**
+Grid card menampilkan layanan:
+- Web Development
+- UI/UX Design
+- Frontend Development
+- Responsive Design
 
-### Desktop View
-![Desktop View - Profile](./screenshots/about.jpg)
-*Tampilan profil dan about me di desktop*
+### 5. **Skills.jsx**
+Progress bar menampilkan keahlian:
+- HTML & CSS
+- JavaScript / TypeScript
+- React.js
+- Tailwind CSS
+- Git & GitHub
+- Figma
 
-![Desktop View - Services](./screenshots/skil.jpg)
-*Tampilan skills di desktop*
+### 6. **Experiences.jsx**
+Timeline pengalaman kerja/organisasi dengan detail:
+- Jabatan
+- Perusahaan/Organisasi
+- Periode waktu
+- Deskripsi pekerjaan
 
-![Desktop View - Contact](./screenshots/kontak.jpg)
-*Tampilan contact form di desktop*
-
-## 🎨 Design Highlights
-
-### Color Palette:
-- **Primary Color**: Teal (#14b8a6) - Untuk aksen, button, dan highlight
-- **Background**: White (#ffffff) dan Light Gray (#f9fafb)
-- **Text**: Gray scale untuk hierarchy
-
-### Responsive Breakpoints:
-- **Mobile**: < 768px (Navbar di atas, layout vertical)
-- **Tablet**: 768px - 1024px (Transisi layout)
-- **Desktop**: > 1024px (Sidebar fixed, profile card fixed)
-
-### Interactive Features:
-- Smooth tab navigation dengan state management
-- Hover effects pada card dan button
-- Animated progress bars untuk skills
-- Smooth scrolling pada content area
-- Icon animations dengan scale dan rotate
+### 7. **Contact.jsx**
+Form kontak dan informasi:
+- Form input (Name, Email, Subject, Message)
+- Validasi form
+- Contact information display
+- Social media links
 
 ---
 
 ## 👨‍💻 Informasi Developer
 
 **Nama**: Damar Galih Abdurrahman  
-**NIM**: [Sesuaikan dengan NIM Anda]  
-**Mata Kuliah**: Pemrograman Web Berbasis Framework  
-**Dosen**: [Sesuaikan dengan nama dosen]  
+**NIM**: L200230184  
+**Program Studi**: Informatika  
+**Universitas**: Universitas Muhammadiyah Surakarta  
+**Email**: l200230184@student.ums.ac.id
 
 ---
 
-## 📝 Catatan Pengembangan
+## 📝 Catatan
 
-### Commit History:
-- ✅ Initial project setup dengan Vite + React
-- ✅ Implementasi komponen Navbar, ProfileCard, AboutContent
-- ✅ Implementasi Services, Skills, Experiences, Contact
-- ✅ Styling dengan Tailwind CSS
-- ✅ Implementasi responsive design untuk mobile
-- ✅ Integrasi data dari dataMahasiswa.js
-- ✅ Optimasi UI/UX dan interaksi
-- ✅ Testing dan bug fixes
-- ✅ Documentation
-
-### Perbaikan yang Dilakukan:
-1. Implementasi responsive navbar (horizontal mobile, vertical desktop)
-2. Perbaikan color palette menggunakan Teal Tailwind
-3. Optimasi layout untuk mobile devices
-4. Perbaikan fungsi tombol Contact Me
-5. Cleanup dan optimasi code
+Aplikasi ini dibuat sebagai tugas Pemrograman Web menggunakan framework React.js dengan fokus pada:
+- Single Page Application (SPA)
+- Responsive Web Design
+- Modern UI/UX
+- Component-based Architecture
+- State Management dengan Context API
 
 ---
 
-## 📦 Dependencies
-
-```json
-{
-  "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^4.3.4",
-    "autoprefixer": "^10.4.20",
-    "postcss": "^8.4.49",
-    "tailwindcss": "^3.4.17",
-    "vite": "^6.0.3"
-  }
-}
-```
-
----
-
-## 🔗 Links & Resources
-
-- [React Documentation](https://react.dev)
-- [Vite Documentation](https://vitejs.dev)
-- [Tailwind CSS Documentation](https://tailwindcss.com)
-- [Deployment Guide - Vercel](https://vercel.com/docs)
-- [Deployment Guide - Netlify](https://docs.netlify.com)
-
----
-
-**Last Updated**: 20 November 2025
+**Tanggal Dibuat**: 20 November 2025

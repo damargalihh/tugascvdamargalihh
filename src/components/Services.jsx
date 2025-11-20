@@ -1,6 +1,9 @@
 import dataMahasiswa from '../data/dataMahasiswa'
+import { useTheme } from '../contexts/ThemeContext'
 
 export default function Services() {
+  const { isDark } = useTheme()
+
   const getServiceIcon = (title) => {
     switch(title) {
       case 'Web Development':
@@ -33,18 +36,18 @@ export default function Services() {
   }
 
   return (
-    <section className="py-8 px-6 md:px-12 bg-white">
+    <section className={`py-8 px-6 md:px-12 ${isDark ? 'bg-gray-900' : 'bg-white'}`}>
       <div className="max-w-5xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 relative inline-block">
+        <h2 className={`text-3xl md:text-4xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-6 relative inline-block`}>
           <span className="relative z-10">My Services</span>
-          <span className="absolute bottom-0 left-0 w-full h-3 bg-teal-200 -z-0 transform -skew-y-1"></span>
+          <span className={`absolute bottom-0 left-0 w-full h-3 ${isDark ? 'bg-teal-900' : 'bg-teal-200'} -z-0 transform -skew-y-1`}></span>
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {dataMahasiswa.services.map((service, i) => (
             <div 
               key={i}
-              className="bg-white rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-200 group hover:border-teal-300 hover:-translate-y-2 animate-slide-up"
+              className={`${isDark ? 'bg-gray-800 border-gray-700 hover:border-teal-500' : 'bg-white border-gray-200 hover:border-teal-300'} rounded-xl p-6 shadow-md hover:shadow-2xl transition-all duration-500 border group hover:-translate-y-2 animate-slide-up`}
               style={{ animationDelay: `${i * 100}ms` }}
             >
               <div className="flex items-start gap-5">
@@ -55,10 +58,10 @@ export default function Services() {
                 
                 {/* Content */}
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
+                  <h3 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-800'} mb-2`}>
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">
+                  <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'} text-sm leading-relaxed`}>
                     {service.description}
                   </p>
                 </div>

@@ -1,4 +1,8 @@
+import { useTheme } from '../contexts/ThemeContext'
+
 export default function Navbar({ activeSection, setActiveSection }) {
+  const { isDark } = useTheme()
+
   const menuItems = [
     { 
       id: 'about', 
@@ -39,7 +43,7 @@ export default function Navbar({ activeSection, setActiveSection }) {
   ]
 
   return (
-    <nav className="fixed top-0 left-0 right-0 md:left-0 md:right-auto md:h-screen w-full md:w-28 bg-white shadow-lg z-50 flex flex-row md:flex-col items-center py-2 md:py-8">
+    <nav className={`fixed top-0 left-0 right-0 md:left-0 md:right-auto md:h-screen w-full md:w-28 ${isDark ? 'bg-gray-900' : 'bg-white'} shadow-lg z-50 flex flex-row md:flex-col items-center py-2 md:py-8`}>
       {/* Menu Items */}
       <div className="flex flex-1 flex-row md:flex-col gap-1 md:gap-6 overflow-x-auto md:overflow-x-visible justify-around md:justify-start w-full px-2 md:px-0">
         {menuItems.map((item) => (
@@ -48,8 +52,8 @@ export default function Navbar({ activeSection, setActiveSection }) {
             onClick={() => setActiveSection(item.id)}
             className={`flex flex-col items-center gap-0.5 md:gap-2 transition-all duration-300 p-2 md:p-3 rounded-lg whitespace-nowrap flex-1 md:flex-none max-w-[80px] md:max-w-none ${
               activeSection === item.id 
-                ? 'text-teal-500 bg-teal-50' 
-                : 'text-gray-400 hover:text-teal-500 hover:bg-gray-50'
+                ? `${isDark ? 'text-teal-400 bg-gray-800' : 'text-teal-500 bg-teal-50'}` 
+                : `${isDark ? 'text-gray-400 hover:text-teal-400 hover:bg-gray-800' : 'text-gray-400 hover:text-teal-500 hover:bg-gray-50'}`
             }`}
           >
             <div className="scale-90 md:scale-100">
@@ -57,7 +61,7 @@ export default function Navbar({ activeSection, setActiveSection }) {
             </div>
             <span className="text-[9px] md:text-xs font-semibold tracking-wider">{item.label}</span>
             {activeSection === item.id && (
-              <div className="w-1 h-1 md:w-1.5 md:h-1.5 bg-teal-500 rounded-full"></div>
+              <div className={`w-1 h-1 md:w-1.5 md:h-1.5 ${isDark ? 'bg-teal-400' : 'bg-teal-500'} rounded-full`}></div>
             )}
           </button>
         ))}
