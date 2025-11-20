@@ -1,3 +1,5 @@
+import fotoDamar from '../assets/foto-damar.jpg';
+
 const dataMahasiswa = {
   nama: "Damar Galih Abdurrahman",
   nim: "L200230184",
@@ -5,7 +7,7 @@ const dataMahasiswa = {
   universitas: "Universitas Muhammadiyah Surakarta",
   email: "l200230184@student.ums.ac.id",
   alamat: "Sragen, Jawa Tengah",
-  foto: "/src/assets/foto-damar.jpg", // ganti dengan foto kamu nanti
+  foto: fotoDamar,
   tentang: "Mahasiswa aktif semester 5 yang gemar belajar teknologi frontend modern seperti React, Tailwind CSS, dan Vite. Memiliki ketertarikan di bidang UI/UX Design dan pengembangan web berbasis framework.",
   
   // Personal Info
